@@ -1055,9 +1055,15 @@ namespace ICSharpCode.AvalonEdit.Editing
 			get { return (bool)GetValue(OverstrikeModeProperty); }
 			set { SetValue(OverstrikeModeProperty, value); }
 		}
-		
+
 		#endregion
-		
+
+		/// <inheritdoc/>
+		protected override System.Windows.Automation.Peers.AutomationPeer OnCreateAutomationPeer()
+		{
+			return new TextAreaAutomationPeer(this);
+		}
+
 		/// <inheritdoc/>
 		protected override HitTestResult HitTestCore(PointHitTestParameters hitTestParameters)
 		{
